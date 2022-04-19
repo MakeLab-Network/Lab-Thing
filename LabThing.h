@@ -99,9 +99,10 @@ public:
     WIFI_subnet = subnet;
   }
 
-  void run() {
-    handleWifiConnection();
+  unsigned int run() {
+    unsigned int s = handleWifiConnection();
     handleGPIO();
+    return s;
   }
 };
 

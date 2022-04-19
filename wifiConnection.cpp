@@ -50,7 +50,7 @@ void startAP(const char *apPass) {
   dnsServer.start(DNS_PORT, "*", apIP);
 }
 
-void handleWifiConnection() {
+unsigned int handleWifiConnection() {
   if (reconnect) {
     Serial.println("Connect requested");
     reconnect = false;
@@ -106,6 +106,7 @@ void handleWifiConnection() {
   dnsServer.processNextRequest();
   // HTTP
   server.handleClient();
+  return s;
 }
 
 /** Is this an IP? */
