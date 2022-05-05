@@ -98,6 +98,8 @@ public:
     WIFI_gateway = gateway;
     WIFI_subnet = subnet;
   }
+  
+  ESP8266WebServer &getServer() { return server; }
 
   void run() {
     handleWifiConnection();
