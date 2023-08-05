@@ -1,5 +1,5 @@
 // Include the core Lab-Thing library
-#include "lab-thing.h"
+#include <lab-thing.h>
 
 /**
  * This script allows your device to create a wifi Access Point (AP) on startup.
