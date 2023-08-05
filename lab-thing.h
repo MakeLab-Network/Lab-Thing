@@ -96,7 +96,7 @@ public:
 
 private:
   void loadCredentials();
-  void loadCredentials();
+  void saveCredentials();
   void startAP(const char *apPass);
   void httpServerSetup(const char *otaUpdateUsername, const char *otaUpdatePassword);
   void handleWifiConnection();
