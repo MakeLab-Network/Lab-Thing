@@ -40,7 +40,9 @@ and that's all you need! after a quick configuration (shown in the Usage section
 
 
 other commands:
-LabThing.getServer().on("/hello", httpHello); // use once in setup. the function httpHello will be called when the string "hello" is given in the uri.
+
+- LabThing.getServer().on("/hello", httpHello); // use once in setup. the function httpHello will be called when the string "hello" is given in the uri.
+- LabThing.wifiStatic(staticIP, gateway, subnet); // configure static options.
 
 ## Usage
 1. run the simple sketch as shown above, 
