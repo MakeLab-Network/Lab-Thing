@@ -1,4 +1,4 @@
-#include "C:\Users\yuval\clones\Lab-Thing\lab-thing.h"
+#include "lab-thing.h"
 /*
    these urls should be accecible trough wifi network, although some routers Oppose...
    available URLs: (replace ID with your device's id)
@@ -12,13 +12,12 @@
 #define AP_PASSWORD "12345678"
 #define OTA_AUTH_USER_NAME "admin"
 #define OTA_AUTH_PASSWORD "admin"
-my_lab my_lab();
 
 void setup() {
   Serial.begin(115200);
-  my_lab.begin(AP_PASSWORD, OTA_AUTH_USER_NAME, OTA_AUTH_PASSWORD);
+  LabThing.begin(AP_PASSWORD, OTA_AUTH_USER_NAME, OTA_AUTH_PASSWORD);
 }
 
 void loop() {  // dont use delay here
-  my_lab.run();
+  LabThing.run();
 }

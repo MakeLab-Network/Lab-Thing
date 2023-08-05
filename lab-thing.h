@@ -91,10 +91,11 @@ class LabThingClass
 public:
   void begin(const char *apPass, const char *otaUpdateUsername, const char *otaUpdatePassword);
   void wifiStatic(IPAddress local_ip, IPAddress gateway, IPAddress subnet);
-  ESP8266WebServer &getServer();
+  ESP8266WebServer &getServer() { return server; }
   void run();
 
 private:
+  void loadCredentials();
   void loadCredentials();
   void startAP(const char *apPass);
   void httpServerSetup(const char *otaUpdateUsername, const char *otaUpdatePassword);
@@ -105,7 +106,6 @@ private:
   IPAddress WIFI_local_ip;
   IPAddress WIFI_gateway;
   IPAddress WIFI_subnet;
-  ESP8266WebServer server;
 };
 extern LabThingClass LabThing;
 

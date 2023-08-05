@@ -15,10 +15,6 @@ void LabThingClass::wifiStatic(IPAddress local_ip, IPAddress gateway, IPAddress 
     WIFI_subnet = subnet;
 }
 
-ESP8266WebServer &LabThingClass::getServer()
-{
-    return server;
-}
 
 void LabThingClass::run()
 {
