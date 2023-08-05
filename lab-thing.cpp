@@ -21,3 +21,5 @@ void LabThingClass::run()
     handleWifiConnection();
     handleGPIO();
 }
+
+LabThingClass LabThing = LabThingClass();

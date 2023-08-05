@@ -26,7 +26,7 @@ void LabThingClass::loadCredentials()
 }
 
 /** Store credentials to EEPROM */
-void LabThingClass::saveCredentials()
+void saveCredentials()
 {
   EEPROM.begin(512);
   EEPROM.put(0, ssid);
