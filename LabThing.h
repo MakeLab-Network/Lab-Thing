@@ -85,28 +85,31 @@ extern void loadCredentials();
 extern void handleWifiConnection();
 extern void handleGPIO();
 
-class LabThingClass {
-public:
-  void begin(const char *apPass, const char *otaUpdateUsername, const char *otaUpdatePassword) {
-    loadCredentials();
-    startAP(apPass);
-    httpServerSetup(otaUpdateUsername, otaUpdatePassword);
-  }
-  void wifiStatic(IPAddress local_ip, IPAddress gateway, IPAddress subnet) {
-    wifiStaticConnection = 1;
-    WIFI_local_ip = local_ip;
-    WIFI_gateway = gateway;
-    WIFI_subnet = subnet;
-  }
-  
-  ESP8266WebServer &getServer() { return server; }
+#ifndef LABTHING_H
+#define LABTHING_H
 
-  void run() {
-    handleWifiConnection();
-    handleGPIO();
-  }
+#include <ESP8266WebServer.h>
+
+class LabThing
+{
+public:
+  void begin(const char *apPass, const char *otaUpdateUsername, const char *otaUpdatePassword);
+  void wifiStatic(IPAddress local_ip, IPAddress gateway, IPAddress subnet);
+  ESP8266WebServer &getServer();
+  void run();
+
+private:
+  void loadCredentials();
+  void startAP(const char *apPass);
+  void httpServerSetup(const char *otaUpdateUsername, const char *otaUpdatePassword);
+  void handleWifiConnection();
+  void handleGPIO();
+
+  int wifiStaticConnection;
+  IPAddress WIFI_local_ip;
+  IPAddress WIFI_gateway;
+  IPAddress WIFI_subnet;
+  ESP8266WebServer server;
 };
 
-extern LabThingClass LabThing;
-
-#endif
+#endif // LABTHING_H
