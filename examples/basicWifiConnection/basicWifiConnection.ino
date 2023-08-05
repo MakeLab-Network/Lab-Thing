@@ -2,7 +2,9 @@
 #include <lab-thing.h>
 
 /**
- * This script allows your device to create a wifi Access Point (AP) on startup.
+ * This Library simplifies the process of setting up a WiFi connection for your ESP device,
+ * allows control of the esp GPIO's using HTTP requests,
+ * and allow easy OTA.
  * 
  * To use, follow the steps:
  * 1. Merge this script with your existing code.
