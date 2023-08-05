@@ -40,7 +40,6 @@
 #define OTA_UPDATE_USERNAME "admin"
 #define OTA_UPDATE_PASSWORD "admin"
 
-#define APSSID "lab_thing_default"
 
 #define LONG_LIMIT_MAX 2147483647
 
@@ -85,28 +84,28 @@ extern void loadCredentials();
 extern void handleWifiConnection();
 extern void handleGPIO();
 
-class LabThingClass {
+#include <ESP8266WebServer.h>
+
+class LabThingClass
+{
 public:
-  void begin(const char *apPass, const char *otaUpdateUsername, const char *otaUpdatePassword) {
-    loadCredentials();
-    startAP(apPass);
-    httpServerSetup(otaUpdateUsername, otaUpdatePassword);
-  }
-  void wifiStatic(IPAddress local_ip, IPAddress gateway, IPAddress subnet) {
-    wifiStaticConnection = 1;
-    WIFI_local_ip = local_ip;
-    WIFI_gateway = gateway;
-    WIFI_subnet = subnet;
-  }
-  
+  void begin(const char *apPass, const char *otaUpdateUsername, const char *otaUpdatePassword);
+  void wifiStatic(IPAddress local_ip, IPAddress gateway, IPAddress subnet);
   ESP8266WebServer &getServer() { return server; }
+  void run();
 
-  void run() {
-    handleWifiConnection();
-    handleGPIO();
-  }
+private:
+  void loadCredentials();
+  void startAP(const char *apPass);
+  void httpServerSetup(const char *otaUpdateUsername, const char *otaUpdatePassword);
+  void handleWifiConnection();
+  void handleGPIO();
+
+  int wifiStaticConnection;
+  IPAddress WIFI_local_ip;
+  IPAddress WIFI_gateway;
+  IPAddress WIFI_subnet;
 };
-
 extern LabThingClass LabThing;
 
-#endif
+#endif // LAB_THING_H
