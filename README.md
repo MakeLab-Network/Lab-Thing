@@ -3,12 +3,15 @@
 ![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 ![license](https://img.shields.io/badge/license-MIT-brightgreen)
 
-Lab-Thing is a powerful C++ library for ESP8266 devices that enables seamless communication between these devices. With Lab-Thing, any ESP8266 device can control the pins of any other ESP866 device running the same library.
+Lab-Thing is a powerful C++ library for ESP8266 IOT devices.
+With Lab-Thing, you can easly connect your esp device to the wifi network and control it's pins from your browser with simple urls / http requests.
 
 ## Features
 
-- **Easy Communication**: Lab-Thing allows ESP8266 devices to easily communicate with each other.
-- **Pin Control**: This feature allows any ESP8266 device to control the pins of another ESP8266 device running Lab-Thing.
+- **WiFi Configuration Screen:** Provides an easy-to-use graphical user interface for configuring the WiFi connection for your ESP8266.
+- **Pin Control:** you can control the GPIO pins of the esp from your phone/PC from the browser using a simple url.
+- **Custom Commands:** can recieve custom commands from the web to execute custom functions.
+- **OTA Update:** Offers Over-The-Air (OTA) functionality for updating your code on the ESP8266.
 
 ## Installation
 
@@ -20,20 +23,37 @@ To install the Lab-Thing library, you can download it from this repository and a
 
 ## Dependencies
 
-Before you start using the Lab-Thing library, make sure the following dependencies are installed:
+There are currently no needed dependencies.
 
-- Add dependencies here...
-
-## Usage
+## Code
 
 To use the Lab-Thing library in your sketch, include it at the top:
+#include "Lab-Thing.h"
 
-cpp #include "Lab-Thing.h"
+in setup: 
+LabThing.begin(AP_PASSWORD, OTA_AUTH_USER_NAME, OTA_AUTH_PASSWORD);
 
-Then, you can call the functions provided by the library. An example would be:
+in loop:
+LabThing.run(); // make sure this runs periodically and your program is not blocking.
 
-cpp //Add usage example here
+and that's all you need! after a quick configuration (shown in the Usage section below) you can now send commands to this esp from your phone or PC!
 
+
+other commands:
+LabThing.getServer().on("/hello", httpHello); // use once in setup. the function httpHello will be called when the string "hello" is given in the uri.
+
+## Usage
+1. run the simple sketch as shown above, 
+   the esp will create an AP named "LabThing".
+   connect to it with AP_PASSWORD from your phone or PC,
+2. go to - http://lab_thing_default.local/wifi to configure your device, 
+   configure the local wifi credentials and assign an ID for your device,
+   the wifi credentials and the device ID will be saved in the EEPROM, so you only need to configure your device once!
+   - to access the configuration page again, go to  http://lab_thing_<id>.local/wifi
+3. you can now control the esp using your phone or pc!
+   connect to the same wifi network you configured for the device,
+   and use the browser to control it's pins!
+   e.g: http://lab_thing_ID.local/4/cmd/write?val=0&duration=1000 // try this to turn on built in led for 1000 millis.
 
 ## Examples
 
@@ -41,15 +61,13 @@ You can find examples of how to use this library in the `examples` folder of thi
 
 ## Troubleshooting
 
-If you experience any issues while using this library, please open an issue in this repository.
+If you experience any issues while using this library, please open an issue in this repository and tell us!
 
 ## Contributing
 
-Contributions to this library are welcome. If you want to contribute, please make a pull request.
+Contributions to this library are welcome. If you want to contribute, please make a pull request. you are also encouraged to contact us directly!
 
 ## License
 
-This library is released under the MIT License. See the included LICENSE file for more details.
-
-Please note that it is your responsibility to comply with the hardware limitations of your device and use this library responsibly.
+This library is released under the MakeLab License. Feel free to use it for any personal Makers project.
 
