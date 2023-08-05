@@ -6,7 +6,7 @@ const char *otaUpdatePath = SERVER_PATH_OTA_UPDATE;
 ESP8266HTTPUpdateServer httpUpdater;
 // ota //
 
-ESP8266WebServer server = ESP8266WebServer(80);
+ESP8266WebServer server = ESP8266WebServer(30300);
 
 void LabThingClass::httpServerSetup(const char *otaUpdateUsername, const char *otaUpdatePassword)
 {
