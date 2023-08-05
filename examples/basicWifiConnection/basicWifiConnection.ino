@@ -13,9 +13,9 @@
  * 6. Your ESP GPIO's can now be controlled by the URL's below from any device on the wifi network. Enjoy!
  * 
  * URL Endpoints:
- * - Control LED: http://lab_thing_<ID>.local/4/cmd/write?val=0&duration=1000 (Sets the built-in LED to HIGH for 1000 millis)
- * - WiFi Settings: http://lab_thing_<ID>.local/wifi (Configure Wi-Fi settings)
- * - Firmware Updates (OTA): http://lab_thing_<ID>.local/firmware_update (Press CTRL+ALT+S, then upload the .bin file located in the sketch directory)
+ * - Control LED: http://lab_thing_<ID>.local:30300/4/cmd/write?val=0&duration=1000 (Sets the built-in LED to HIGH for 1000 millis)
+ * - WiFi Settings: http://lab_thing_<ID>.local:30300/wifi (Configure Wi-Fi settings)
+ * - Firmware Updates (OTA): http://lab_thing_<ID>.local:30300/firmware_update (Press CTRL+ALT+S, then upload the .bin file located in the sketch directory)
  * note that the DNS can sometimes cause problems, if the above URL's does not work it is recommended using the device ip instead (printed to the serial monitor).
  */
 
