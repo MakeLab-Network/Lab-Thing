@@ -1,4 +1,4 @@
-#include "LabThing.h"
+#include "lab-thing.h"
 
 // void costumUrlHelperFunc(voidFuncPtr handler) {
 //   server.client().setNoDelay(true); // disables Nagle's algorithm. everything is faster

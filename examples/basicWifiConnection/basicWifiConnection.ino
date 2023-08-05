@@ -1,5 +1,4 @@
-#include <LabThing.h>
-
+#include "lab-thing.h"
 /*
  * 1. add this program code to your code.
  * 2. your device should now create a wifi Access Point when started.
@@ -23,6 +22,6 @@ void setup() {
   LabThing.begin(AP_PASSWORD, OTA_AUTH_USER_NAME, OTA_AUTH_PASSWORD);
 }
 
-void loop() { // dont use delay here
+void loop() {  // dont use delay here
   LabThing.run();
 }
