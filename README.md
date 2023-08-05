@@ -1,7 +1,6 @@
 # Lab-Thing Library for ESP8266
 [![version](https://img.shields.io/badge/version-1.0.0-brightgreen)](https://github.com/guyostfeld/Lab-Thing/)
 ![coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
-![license](https://img.shields.io/badge/license-MIT-brightgreen)
 
 Lab-Thing is a powerful C++ library for ESP8266 IOT devices.
 With Lab-Thing, you can easly connect your esp device to the wifi network and control it's pins from your browser with simple urls / http requests.
