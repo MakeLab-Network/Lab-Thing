@@ -33,7 +33,7 @@ void GPIOCmdWrite()
   }
 }
 // this will not work with two pins with the same action time...
-void LabThing::handleGPIO()
+void LabThingClass::handleGPIO()
 {
   if (millis() > digitalPinsNearestActionTime) // if this is the nearest action among digital pins.
   {

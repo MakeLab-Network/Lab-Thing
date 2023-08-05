@@ -25,13 +25,13 @@
 
 void setup() {
   Serial.begin(115200);
-  LabThing.begin(AP_PASSWORD, OTA_AUTH_USER_NAME, OTA_AUTH_PASSWORD);
+  LabThingClass.begin(AP_PASSWORD, OTA_AUTH_USER_NAME, OTA_AUTH_PASSWORD);
 //  LabThing.wifiStatic(staticIP, gateway, subnet);
   pinMode(D4, OUTPUT);
 
 }
 void loop() {
-  LabThing.run();
+  LabThingClass.run();
 
   digitalWrite(D4, millis() % 500 > 250);
 

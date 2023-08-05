@@ -8,7 +8,7 @@ ESP8266HTTPUpdateServer httpUpdater;
 
 ESP8266WebServer server = ESP8266WebServer(80);
 
-void LabThing::httpServerSetup(const char *otaUpdateUsername, const char *otaUpdatePassword)
+void LabThingClass::httpServerSetup(const char *otaUpdateUsername, const char *otaUpdatePassword)
 {
   // Start webserver
 

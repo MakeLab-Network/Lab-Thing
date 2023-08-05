@@ -1,13 +1,13 @@
 #include "lab-thing.h"
 
-void LabThing::begin(const char *apPass, const char *otaUpdateUsername, const char *otaUpdatePassword)
+void LabThingClass::begin(const char *apPass, const char *otaUpdateUsername, const char *otaUpdatePassword)
 {
     loadCredentials();
     startAP(apPass);
     httpServerSetup(otaUpdateUsername, otaUpdatePassword);
 }
 
-void LabThing::wifiStatic(IPAddress local_ip, IPAddress gateway, IPAddress subnet)
+void LabThingClass::wifiStatic(IPAddress local_ip, IPAddress gateway, IPAddress subnet)
 {
     wifiStaticConnection = 1;
     WIFI_local_ip = local_ip;
@@ -15,12 +15,12 @@ void LabThing::wifiStatic(IPAddress local_ip, IPAddress gateway, IPAddress subne
     WIFI_subnet = subnet;
 }
 
-ESP8266WebServer &LabThing::getServer()
+ESP8266WebServer &LabThingClass::getServer()
 {
     return server;
 }
 
-void LabThing::run()
+void LabThingClass::run()
 {
     handleWifiConnection();
     handleGPIO();

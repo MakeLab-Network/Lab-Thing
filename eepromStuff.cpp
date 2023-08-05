@@ -2,7 +2,7 @@
 #include <EEPROM.h>
 
 /* Load credentials from EEPROM */
-void LabThing::loadCredentials()
+void LabThingClass::loadCredentials()
 {
   EEPROM.begin(512);
   EEPROM.get(0, ssid);
@@ -26,7 +26,7 @@ void LabThing::loadCredentials()
 }
 
 /** Store credentials to EEPROM */
-void LabThing::saveCredentials()
+void LabThingClass::saveCredentials()
 {
   EEPROM.begin(512);
   EEPROM.put(0, ssid);

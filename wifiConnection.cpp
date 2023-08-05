@@ -37,7 +37,7 @@ void connectToWifiStatic()
   Serial.println(connRes);
 }
 
-void LabThing::startAP(const char *apPass)
+void LabThingClass::startAP(const char *apPass)
 {
   IPAddress apIP(172, 217, 28, 1);
   IPAddress netMsk(255, 255, 255, 0);
@@ -54,7 +54,7 @@ void LabThing::startAP(const char *apPass)
   dnsServer.start(DNS_PORT, "*", apIP);
 }
 
-void LabThing::handleWifiConnection()
+void LabThingClass::handleWifiConnection()
 {
   if (reconnect)
   {
