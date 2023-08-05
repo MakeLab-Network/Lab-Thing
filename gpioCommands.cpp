@@ -1,4 +1,4 @@
-#include "LabThing.h"
+#include "lab-thing.h"
 byte pinMap[9] = {D0, D1, D2, D3, D4, D5, D6, D7, D8};
 long digitalPinsNextActionsTimes[9] = {LONG_LIMIT_MAX, LONG_LIMIT_MAX, LONG_LIMIT_MAX, LONG_LIMIT_MAX, LONG_LIMIT_MAX, LONG_LIMIT_MAX, LONG_LIMIT_MAX, LONG_LIMIT_MAX, LONG_LIMIT_MAX};
 long digitalPinsNearestActionTime = LONG_LIMIT_MAX;
@@ -6,7 +6,8 @@ bool digitalPinsNextActionsValues[9] = {false, false, false, false, false, false
 bool nextActionValue = 0;
 byte nextPinForAction = 0;
 
-void GPIOCmdWrite() {
+void GPIOCmdWrite()
+{
   server.client().setNoDelay(true); // disables Nagle's algorithm. everything is faster
   server.send(200, "text/plain", "");
   byte pinIndex = server.pathArg(0).toInt(); // pins like D0, D1 etc... NOT REAL GPIO NUMBER!
@@ -32,7 +33,8 @@ void GPIOCmdWrite() {
   }
 }
 // this will not work with two pins with the same action time...
-void handleGPIO() {
+void LabThing::handleGPIO()
+{
   if (millis() > digitalPinsNearestActionTime) // if this is the nearest action among digital pins.
   {
     digitalWrite(pinMap[nextPinForAction], nextActionValue); // take the action!!

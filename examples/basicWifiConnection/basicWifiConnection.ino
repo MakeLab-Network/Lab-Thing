@@ -1,4 +1,4 @@
-#include <LabThing.h>
+#include <lab-thing.h>
 
 /*
    these urls should be accecible trough wifi network, although some routers Oppose...

@@ -1,8 +1,9 @@
-#include "LabThing.h"
+#include "lab-thing.h"
 #include <EEPROM.h>
 
-/** Load credentials from EEPROM */
-void loadCredentials() {
+/* Load credentials from EEPROM */
+void LabThing::loadCredentials()
+{
   EEPROM.begin(512);
   EEPROM.get(0, ssid);
   EEPROM.get(0 + sizeof(ssid), password);
@@ -12,7 +13,8 @@ void loadCredentials() {
   char ok[2 + 1];
   EEPROM.get(0 + sizeof(ssid) + sizeof(password) + sizeof(deviceId) + sizeof(softAP_ssid), ok);
   EEPROM.end();
-  if (String(ok) != String("OK")) {
+  if (String(ok) != String("OK"))
+  {
     Serial.println("eeprom reding faulty\n");
     ssid[0] = 0;
     password[0] = 0;
@@ -24,7 +26,8 @@ void loadCredentials() {
 }
 
 /** Store credentials to EEPROM */
-void saveCredentials() {
+void LabThing::saveCredentials()
+{
   EEPROM.begin(512);
   EEPROM.put(0, ssid);
   EEPROM.put(0 + sizeof(ssid), password);

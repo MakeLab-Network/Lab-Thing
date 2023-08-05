@@ -1,7 +1,7 @@
 
 //#include <ESP8266WiFi.h>
 
-#include <LabThing.h>
+#include <lab-thing.h>
 
 
 /*
