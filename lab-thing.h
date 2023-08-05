@@ -100,6 +100,7 @@ private:
   void startAP(const char *apPass);
   void httpServerSetup(const char *otaUpdateUsername, const char *otaUpdatePassword);
   void handleWifiConnection();
+  void handleWifiSave();
   void handleGPIO();
 
   int wifiStaticConnection;

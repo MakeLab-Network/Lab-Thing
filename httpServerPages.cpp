@@ -64,7 +64,7 @@ void handleWifiSettingsPage() {
   server.client().stop(); // Stop is needed because we sent no content length
 }
 
-void handleWifiSave() {
+void LabThingClass::handleWifiSave() {
   if (USE_SERIAL)
     Serial.println("wifi save");
   server.arg("ssid").toCharArray(ssid, sizeof(ssid) - 1);
