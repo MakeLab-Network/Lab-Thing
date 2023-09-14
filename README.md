@@ -47,14 +47,14 @@ other commands:
 1. run the simple sketch as shown above, 
    the esp will create an AP named "LabThing".
    connect to it with AP_PASSWORD from your phone or PC,
-2. go to - http://lab_thing_default.local/wifi to configure your device, 
+2. go to - http://lab_thing_default.local:30300/wifi to configure your device, 
    configure the local wifi credentials and assign an ID for your device,
    the wifi credentials and the device ID will be saved in the EEPROM, so you only need to configure your device once!
-   - to access the configuration page again, go to  http://lab_thing_<id>.local/wifi
+   - to access the configuration page again, go to  http://lab_thing_<id>.local:30300/wifi
 3. you can now control the esp using your phone or pc!
    connect to the same wifi network you configured for the device,
    and use the browser to control it's pins!
-   e.g: http://lab_thing_ID.local/4/cmd/write?val=0&duration=1000 // try this to turn on built in led for 1000 millis.
+   e.g: http://lab_thing_ID.local:30300/4/cmd/write?val=0&duration=1000 // try this to turn on built in led for 1000 millis.
 
 ## Examples
 
