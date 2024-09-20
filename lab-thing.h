@@ -105,6 +105,9 @@ private:
   IPAddress WIFI_local_ip;
   IPAddress WIFI_gateway;
   IPAddress WIFI_subnet;
+
+  std::vector<String> knownSSIDs; // Initialize as empty
+  size_t currentSSIDIndex = 0;
 };
 extern LabThingClass LabThing;
 

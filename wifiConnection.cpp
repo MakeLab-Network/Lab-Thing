@@ -54,16 +54,59 @@ void LabThingClass::startAP(const char *apPass)
   dnsServer.start(DNS_PORT, "*", apIP);
 }
 
+#include <vector>
+#include <string>
+#include <algorithm>
+
+
 void LabThingClass::handleWifiConnection()
 {
   if (reconnect)
   {
     Serial.println("Connect requested");
     reconnect = false;
-    if (wifiStaticConnection)
-      connectToWifiStatic();
-    else
-      connectToWifi();
+    
+    bool connected = false;
+    while (!connected && currentSSIDIndex < knownSSIDs.size())
+    {
+      knownSSIDs[currentSSIDIndex].toCharArray(ssid, sizeof(ssid));
+      Serial.printf("Attempting to connect to %s\n", ssid);
+      
+      if (wifiStaticConnection)
+        connectToWifiStatic();
+      else
+        connectToWifi();
+      
+      unsigned long startAttemptTime = millis();
+      while (WiFi.status() != WL_CONNECTED && millis() - startAttemptTime < 10000)
+      {
+        delay(500);
+        Serial.print(".");
+      }
+      
+      if (WiFi.status() == WL_CONNECTED)
+      {
+        connected = true;
+        Serial.println("\nConnected successfully");
+        
+        // Add the successful SSID to the list if it's not already there
+        if (std::find(knownSSIDs.begin(), knownSSIDs.end(), String(ssid)) == knownSSIDs.end()) {
+          knownSSIDs.push_back(String(ssid));
+        }
+      }
+      else
+      {
+        Serial.println("\nFailed to connect");
+        currentSSIDIndex++;
+      }
+    }
+    
+    if (!connected)
+    {
+      Serial.println("Failed to connect to any known network");
+      currentSSIDIndex = 0; // Reset for next attempt
+    }
+    
     lastConnectTry = millis();
   }
 
@@ -108,7 +151,9 @@ void LabThingClass::handleWifiConnection()
       else if (s == WL_NO_SSID_AVAIL)
       {
         WiFi.disconnect();
-        Serial.println("disconnecting from wifi");
+        Serial.println("Disconnecting from wifi");
+        currentSSIDIndex = (currentSSIDIndex + 1) % knownSSIDs.size(); // Move to next SSID
+        reconnect = true; // Try to reconnect
       }
     }
     if (s == WL_CONNECTED)
